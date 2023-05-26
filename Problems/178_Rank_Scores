@@ -1,0 +1,21 @@
+https://leetcode.com/problems/rank-scores/
+
+-- 736 ms
+SELECT  s1.score, (SELECT COUNT(DISTINCT s2.score) 
+FROM Scores s2
+WHERE s2.score >= s1.score) AS "rank"
+FROM Scores s1
+ORDER BY s1.score DESC
+
+/*
+(1) 3.5 -> 4.0 , 3.65, 3.85, 3.5 -> 4
+(2) 3.65 -> 3.65, 4.0, 3.85 -> 3
+(3) 4.0 -> 4.0 -> 1
+(4) 3.85 -> 3.85, 4.0 -> 2
+(5) 4.0 -> 4.0 -> 1
+(6) 3.65 -> 3.65, 4.0, 3.85 -> 3 
+
+rank {4,3,1,2,1,3}
+s1.score {3.5, 3.65, 4.00, 3.85, 4.00, 3.65}
+DESC -> key
+*/
