@@ -1,0 +1,9 @@
+https://leetcode.com/problems/delete-duplicate-emails/
+
+Method 1 -- 1135 ms
+DELETE p2
+FROM Person p1 JOIN Person p2
+ON p1.id < p2.id AND p1.email LIKE p2.email
+
+Method 2 -- 692 ms
+DELETE FROM Person WHERE Id NOT IN(SELECT MIN(Id) FROM Person GROUP BY email)
