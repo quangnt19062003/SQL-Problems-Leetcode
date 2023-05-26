@@ -1,0 +1,8 @@
+https://leetcode.com/problems/game-play-analysis-i/description/
+
+--2329 ms
+SELECT o.player_id, o.event_date AS first_login
+FROM
+(SELECT a.player_id, a.event_date, DENSE_RANK() OVER(PARTITION BY player_id ORDER BY event_date ASC) rank
+FROM Activity a) o
+WHERE o.rank = 1
