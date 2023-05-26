@@ -1,0 +1,12 @@
+https://leetcode.com/problems/department-top-three-salaries/submissions/954614250/
+
+-- 903 ms
+SELECT o.Department, o.Employee, o.Salary
+FROM 
+(SELECT d.name AS Department, e.name AS Employee, salary AS Salary, 
+DENSE_RANK() OVER(
+    PARTITION BY d.name ORDER BY e.salary DESC
+) rank
+FROM Employee e JOIN Department d
+ON e.departmentId = d.id) o
+WHERE o.rank <= 3
