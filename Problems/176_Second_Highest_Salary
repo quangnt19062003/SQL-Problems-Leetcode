@@ -1,0 +1,13 @@
+https://leetcode.com/problems/second-highest-salary/description/
+
+-- Method 1 - BUG
+  SELECT (SELECT Employee.salary
+  FROM Employee
+  ORDER BY Employee.salary DESC
+  OFFSET 1 ROWS
+  FETCH NEXT 1 ROWS ONLY) AS SecondHighestSalary;
+
+-- Method 2 - 557 ms
+SELECT MAX(Employee.salary) AS SecondHighestSalary
+FROM Employee
+WHERE Employee.salary NOT IN (SELECT MAX(Employee.salary) FROM Employee)
