@@ -1,0 +1,15 @@
+https://leetcode.com/problems/nth-highest-salary/
+
+-- 800 ms
+CREATE FUNCTION getNthHighestSalary(@N INT) RETURNS INT AS
+BEGIN
+SET @N = @N - 1
+    RETURN (
+        /* Write your T-SQL query statement below. */
+        SELECT DISTINCT Employee.salary
+        FROM Employee
+        ORDER BY Employee.salary DESC
+        OFFSET @N ROWS
+        FETCH NEXT 1 ROWS ONLY
+    );
+END
