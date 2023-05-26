@@ -1,0 +1,7 @@
+https://leetcode.com/problems/rising-temperature/description/
+**DATEDIFF(interval, date1, date2)
+
+-- 751 ms
+SELECT Today.id FROM Weather Today, Weather Yesterday
+WHERE DATEDIFF(DAY, Yesterday.recordDate,Today.recordDate) = 1
+AND Today.temperature > Yesterday.temperature
