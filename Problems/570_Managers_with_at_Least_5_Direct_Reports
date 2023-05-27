@@ -1,0 +1,9 @@
+https://leetcode.com/problems/managers-with-at-least-5-direct-reports/
+
+-- 932 ms
+SELECT e1.name
+FROM Employee e1, 
+(SELECT managerId, COUNT(managerId) AS report
+FROM Employee
+GROUP BY managerId) e2
+WHERE e1.id = e2.managerId AND report >= 5
