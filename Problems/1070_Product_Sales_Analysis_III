@@ -1,0 +1,8 @@
+https://leetcode.com/problems/product-sales-analysis-iii/
+
+-- 5026 ms
+SELECT p.product_id, s.year as first_year, s.quantity, s.price
+FROM Product p JOIN 
+(SELECT sale_id, product_id, quantity, price, year, DENSE_RANK() OVER(PARTITION BY product_id ORDER BY year) AS rank 
+FROM Sales) s
+ON s.product_id = p.product_id AND s.rank = 1
