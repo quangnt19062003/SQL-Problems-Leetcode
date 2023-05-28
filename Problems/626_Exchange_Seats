@@ -1,0 +1,14 @@
+https://leetcode.com/problems/exchange-seats/
+
+-- 642 ms
+SELECT
+    CASE
+    WHEN id % 2 = 0 THEN id - 1
+    WHEN id = (SELECT COUNT(*) FROM seat) THEN id
+    ELSE id + 1
+    END AS id, student
+FROM
+    seat
+ORDER BY id
+
+-- 2 abbot 1 doris , 4 emerson 3 green, 5 jeames 
