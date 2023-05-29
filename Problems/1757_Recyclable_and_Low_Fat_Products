@@ -1,0 +1,6 @@
+https://leetcode.com/problems/recyclable-and-low-fat-products/
+
+-- 720 ms
+SELECT p.product_id
+FROM Products p
+WHERE p.low_fats LIKE 'Y' AND p.recyclable LIKE 'Y'
