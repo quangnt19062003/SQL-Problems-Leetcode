@@ -1,0 +1,15 @@
+https://leetcode.com/problems/top-travellers
+
+-- 1180 ms
+SELECT name, 
+SUM(CASE WHEN distance IS NOT NULL THEN distance
+ELSE 0
+END) AS travelled_distance 
+FROM Users LEFT JOIN Rides
+ON Users.id = Rides.user_id
+GROUP BY user_id, name
+ORDER BY travelled_distance DESC, name ASC
+
+-- user_id == , rank
+-- SUM distance
+-- DESCT distance -> name
