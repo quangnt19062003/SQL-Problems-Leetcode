@@ -1,0 +1,9 @@
+https://leetcode.com/problems/last-person-to-fit-in-the-bus
+
+-- 4053 ms
+SELECT TOP 1 q1.person_name 
+FROM Queue q1 JOIN Queue q2
+ON q1.turn >= q2.turn
+GROUP BY q1.turn,q1.person_name 
+HAVING SUM(q2.weight) <= 1000
+ORDER BY q1.turn DESC
