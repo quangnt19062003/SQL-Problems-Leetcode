@@ -1,0 +1,11 @@
+https://leetcode.com/problems/biggest-single-number
+
+-- 579 ms
+WITH MyNum AS (
+  SELECT num, COUNT(num) AS CheckCount
+  FROM MyNumbers
+  GROUP BY num
+  HAVING COUNT(num) = 1
+)
+SELECT ISNULL(MAX(num), NULL) AS num
+FROM MyNum
