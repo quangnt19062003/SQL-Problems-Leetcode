@@ -1,0 +1,10 @@
+https://leetcode.com/problems/friend-requests-ii-who-has-the-most-friends
+
+-- 781 ms
+SELECT TOP 1 a.requester_id AS id, (
+    SELECT COUNT(*) 
+    FROM RequestAccepted b 
+    WHERE b.accepter_id = a.requester_id OR b.requester_id = a.requester_id
+) AS num
+FROM RequestAccepted a
+ORDER BY num DESC;
