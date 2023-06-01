@@ -1,0 +1,7 @@
+https://leetcode.com/problems/project-employees-i/
+
+-- 3903 ms
+SELECT p.project_id, ROUND(1.0*SUM(experience_years)/COUNT(p.employee_id),2) AS average_years
+FROM Project p JOIN Employee e
+ON p.employee_id = e.employee_id
+GROUP BY project_id
